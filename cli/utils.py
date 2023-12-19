@@ -1,9 +1,10 @@
 from pymongo import MongoClient
 from pprint import pprint
 import json
+import requests
 def _query(text=None, elements=None, elements_exact=None, properties=None):
     #ds_client = MongoClient("mongodb://CLI:CLI@localhost:27017")['cf-test']['datasets']
-    ds_client = MongoClient("mongodb://10.0.44.210:27017")['cf-web']['datasets']
+    #ds_client = MongoClient("mongodb://10.0.44.210:27017")['cf-web']['datasets']
     query = {}
     if text is not None:
         query['$text']={'$search':text}
@@ -21,12 +22,13 @@ def _query(text=None, elements=None, elements_exact=None, properties=None):
 
 
 
-    q = ds_client.find(query,{'name':1,'colabfit-id':1,'authors':1,'links':1,'aggregated_info.elements':1,'aggregated_info.property_types':1,'aggregated_info.nconfigurations':1, 'description':1})
-    return q
+    #q = ds_client.find(query,{'name':1,'colabfit-id':1,'authors':1,'links':1,'aggregated_info.elements':1,'aggregated_info.property_types':1,'aggregated_info.nconfigurations':1, 'description':1})
+    q = requests.post('http://100.68.26.215:4810/datasets/',data=query)
+    return q.json()
     
 def format_print(doc):
     new_doc={}
-    doc.pop('_id')
+    #doc.pop('_id')
     new_doc['colabfit-id']=doc['colabfit-id']
     new_doc['name']=doc['name']
     new_doc['authors']=doc['authors']

@@ -58,7 +58,7 @@ def query(ctx,text,elements,elements_exact,property_types):
     """
     from .utils import _query, format_print
     q = _query(text,elements,elements_exact,property_types)
-    q = list(q)
+    #q = list(q)
     print (OKGREEN+"Found %s Dataset(s) on the ColabFit Exchange!" %len(q)+END)
     print ("--------------------------------------------")
     for i in q:
