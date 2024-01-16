@@ -2,7 +2,7 @@ from pymongo import MongoClient
 from pprint import pprint
 import json
 def _query(text=None, elements=None, elements_exact=None, properties=None):
-    ds_client = MongoClient("mongodb://CLI:CLI@localhost:27017")['cf-test']['datasets']
+    ds_client = MongoClient("mongodb://CLI:CLI@localhost:27017")['cf-update-2023-11-30']['datasets']
     query = {}
     if text is not None:
         query['$text']={'$search':text}
