@@ -1,8 +1,9 @@
 from pymongo import MongoClient
 from pprint import pprint
 import json
+import requests
 def _query(text=None, elements=None, elements_exact=None, properties=None):
-    ds_client = MongoClient("mongodb://CLI:CLI@localhost:27017")['cf-update-2023-11-30']['datasets']
+    #ds_client = MongoClient("mongodb://CLI:CLI@localhost:27017")['cf-update-2023-11-30']['datasets']
     query = {}
     if text is not None:
         query['$text']={'$search':text}
@@ -19,8 +20,9 @@ def _query(text=None, elements=None, elements_exact=None, properties=None):
 
 
 
-
-    q = ds_client.find(query,{'name':1,'colabfit-id':1,'authors':1,'links':1,'aggregated_info.elements':1,'aggregated_info.property_types':1,'aggregated_info.nconfigurations':1, 'description':1})
+    #post to REST API
+    q = requests.post('https://cf.hsrn.nyu.edu/datasets',json=query) 
+    #q = ds_client.find(query,{'name':1,'colabfit-id':1,'authors':1,'links':1,'aggregated_info.elements':1,'aggregated_info.property_types':1,'aggregated_info.nconfigurations':1, 'description':1})
     return q
     
 def format_print(doc):
