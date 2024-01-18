@@ -1,4 +1,5 @@
 import click
+import tqdm
 
 OKGREEN = '\033[92m'
 END = '\x1b[0m'
@@ -59,9 +60,9 @@ def colabfit(ctx):
         type=click.STRING)
 @click.pass_context
 #more
-def query(ctx,text,elements,elements_exact,property_types):
+def query(ctx,text,elements,elements_exact,download,property_types):
     """
-    Queries the ColabFit Exchange and prints results
+    Queries the ColabFit Exchange and prints results. Optionally downloads resulting datasets.
     """
     from .utils import _query, format_print
     q = _query(text,elements,elements_exact,property_types)
@@ -70,3 +71,10 @@ def query(ctx,text,elements,elements_exact,property_types):
     print ("--------------------------------------------")
     for i in q:
          format_print(i)
+    if download in ["xyz", "XYZ", "lmdb", "LMDB"]:
+        print ("--------------------------------------------")
+        print ('Downloading Datasets')
+        print ("--------------------")
+    for i in tqdm.tqdm(q):
+        _download(i,download)
+        
