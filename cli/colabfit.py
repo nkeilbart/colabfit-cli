@@ -64,7 +64,7 @@ def query(ctx,text,elements,elements_exact,download,property_types):
     """
     Queries the ColabFit Exchange and prints results. Optionally downloads resulting datasets.
     """
-    from .utils import _query, format_print
+    from .utils import _query, format_print, _download
     q = _query(text,elements,elements_exact,property_types)
     q = list(q)
     print (OKGREEN+"Found %s Dataset(s) on the ColabFit Exchange!" %len(q)+END)
