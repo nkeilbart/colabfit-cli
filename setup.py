@@ -11,7 +11,7 @@ setuptools.setup(
     url="https://github.com/colabfit/colabfit-cli",
     packages=setuptools.find_packages(),
     install_requires=[
-         'click>=7.0', 'pymongo', 'requests',
+         'click>=7.0', 'requests',
     ],
     python_requires='>=3.7',
     entry_points="""
