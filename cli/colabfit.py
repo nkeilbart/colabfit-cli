@@ -75,6 +75,6 @@ def query(ctx,text,elements,elements_exact,download,property_types):
         print ("--------------------------------------------")
         print ('Downloading Datasets')
         print ("--------------------")
-    for i in tqdm.tqdm(q):
-        _download(i,download)
+        for i in tqdm.tqdm(q):
+            _download(i,download)
         
