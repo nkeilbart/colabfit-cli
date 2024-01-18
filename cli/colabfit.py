@@ -34,7 +34,14 @@ def colabfit(ctx):
         """,
         type=click.STRING)
 @click.option('--elements-exact', '-ee',
-        help="""Returns datasets that contain ONLY specified elements. Pass arguements as space delimited string.
+        help="""Returns datasets that contain ONLY specified elements. Pass arguments as space-delimited string.
+
+        \b
+
+        """,
+        type=click.STRING)
+@click.option('--download', '-d',
+        help="""Downloads all found datasets in specified format. Format can either be "xyz" or "lmdb".
 
         \b
 
