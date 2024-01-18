@@ -1,6 +1,8 @@
 from pprint import pprint
 import json
 import requests
+import os
+
 def _query(text=None, elements=None, elements_exact=None, properties=None):
     query = {}
     if text is not None:
@@ -32,3 +34,12 @@ def format_print(doc):
     new_doc['links'].append('https://materials.colabfit.org/id/%s'%doc['colabfit-id'])
     #new_doc['aggregated_info']=doc['aggregated_info']
     pprint (new_doc,sort_dicts=False)
+
+def _download(doc,format):
+    e_id = doc['extended-id']
+    #better option needed
+    if format in ["xyz", "XYZ"]:
+        os.system('wget https://materials.colabfit.org/dataset-xyz/%s.xyz.xz' %eid) 
+    if format in ["lmdb", "LMDB"]:
+        os.system('wget https://materials.colabfit.org/dataset-lmdb/%s.lmdb' %eid)
+    
