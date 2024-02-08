@@ -11,9 +11,9 @@ def _query(text=None, elements=None, elements_exact=None, properties=None):
         if elements_exact is not None:
             raise Exception('Only one of elements or elements-exact should be specified')
         else:
-            query['aggregated_info.elements']={'$all':elements.upper().split(' ')}
+            query['aggregated_info.elements']={'$all':[e.capitalize() for e in elements.split(' ')]}
     if elements_exact is not None:
-            ee = elements_exact.upper().split(' ')
+            ee = [e.capitalize() for e in elements_exact.split(' ')]
             query['aggregated_info.elements']={"$size":len(ee), '$all': ee}
     if properties is not None:
             query['aggregated_info.property_types']={'$all':properties.split(' ')}
