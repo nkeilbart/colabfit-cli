@@ -31,7 +31,7 @@ def format_print(doc):
     new_doc['authors']=doc['authors']
     new_doc['description']=doc['description']
     new_doc['links']=doc['links']
-    new_doc['links'].append('https://materials.colabfit.org/id/%s'%doc['colabfit-id'])
+    new_doc['links']['colabfit']='https://materials.colabfit.org/id/%s'%doc['colabfit-id']
     #new_doc['aggregated_info']=doc['aggregated_info']
     pprint (new_doc,sort_dicts=False)
 
