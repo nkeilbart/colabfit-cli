@@ -16,9 +16,9 @@ dependencies = [
     "pymongo",
     "tqdm"
 ]
-urls = {
-    "Homepage" = "https://github.com/colabfit/colabfit-cli"
-}
+
+[project.urls]
+Homepage = "https://github.com/colabfit/colabfit-cli"
 
 [project.scripts]
 colabfit = "cli.colabfit:colabfit"
