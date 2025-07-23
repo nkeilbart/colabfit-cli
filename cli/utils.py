@@ -55,10 +55,7 @@ def format_print(doc):
     new_doc['authors']=doc['authors']
     new_doc['description']=doc['description']
     new_doc['elements']=doc['elements']  
-    #new_doc['properties']=doc['aggregated_info']['property_types']
     new_doc['nconfigurations']=doc['nconfigurations']
     new_doc['natoms']=doc['nsites']
     new_doc['uploader'] = doc['uploader']
-    #new_doc['links']=doc['links']
-    #new_doc['aggregated_info']=doc['aggregated_info']
     pprint (new_doc,sort_dicts=False)
